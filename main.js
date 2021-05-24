@@ -4,7 +4,7 @@ const search = document.querySelector(".js-userInput");
 const buttonSearch = document.querySelector(".js-button");
 const resultContainer = document.querySelector(".js-placeResult");
 let searchResult = [];
-let defaultImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+let defaultImage = "//via.placeholder.com/210x295/ffffff/666666/?text=TV";
 let favoritesShow = [];
 
 function handlerButtonSearch(event) {
