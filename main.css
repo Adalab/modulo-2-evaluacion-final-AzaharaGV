@@ -1,0 +1,27 @@
+.header {
+  background-color: coral;
+}
+
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.favorites {
+  background-color: cornflowerblue;
+  width: 30vh;
+}
+
+.result {
+  background-color: dimgrey;
+  width: 70vh;
+}
+
+.button {
+  height: 25px;
+}
+
+.allSeries {
+  background-color: lightgreen;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
