@@ -25,3 +25,8 @@
   cursor: pointer;
   margin-bottom: 5px;
 }
+
+.js-favoriteSelect {
+  
+  background-color: blueviolet;
+}
