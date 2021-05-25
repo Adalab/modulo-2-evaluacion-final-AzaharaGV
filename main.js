@@ -58,12 +58,18 @@ function favoriteSelect(event) {
   const favoriteSerieSelect = event.currentTarget;
   favoriteSerieSelect.classList.toggle("SuperFavoriteSelect");
   const serieId = parseInt(event.currentTarget.id);
-  const seriFavId = searchResult.find(
+  const indexShow = favoritesShow.findIndex(
     (nuevaFavoritos) => nuevaFavoritos.show.id === serieId
   );
-  favoritesShow.push(seriFavId);
-  localStorageFavorite();
-
+  if (indexShow === -1) {
+    const seriFavId = searchResult.find(
+      (nuevaFavoritos) => nuevaFavoritos.show.id === serieId
+    );
+    favoritesShow.push(seriFavId);
+  } else {
+    alert("Ya es favorita");
+  }
+  // localStorageFavorite();
   renderFav();
 }
 
@@ -89,7 +95,7 @@ function renderFav() {
     } else {
       allInfoFavCardsImage.src = itemSerie.show.image.medium;
     }
-    //SuperFavoriteSelect();
+    localStorageFavorite();
   }
 }
 console.log(renderFav);
@@ -97,10 +103,15 @@ console.log(renderFav);
 //Almaceno datos en el localStorage
 
 function localStorageFavorite() {
-  localStorage.setItem("", "");
+  localStorage.setItem("localFavorites", JSON.stringify(favoritesShow));
 }
 
 function getFromLocalStorage() {
   // Hay algo en el localStrorage?
   // Si -> Sacar localStorage, parse, asignarselo a favoritesShow y llmar a renderFav()
+  if (localStorage !== "") {
+    favoritesShow = JSON.parse(localStorage.getItem("localFavorites"));
+  }
 }
+
+renderFav();
