@@ -58,18 +58,22 @@ function favoriteSelect(event) {
   const favoriteSerieSelect = event.currentTarget;
   favoriteSerieSelect.classList.toggle("SuperFavoriteSelect");
   const serieId = parseInt(event.currentTarget.id);
+  console.log(serieId);
   const indexShow = favoritesShow.findIndex(
     (nuevaFavoritos) => nuevaFavoritos.show.id === serieId
   );
+  console.log(indexShow);
   if (indexShow === -1) {
     const seriFavId = searchResult.find(
       (nuevaFavoritos) => nuevaFavoritos.show.id === serieId
     );
     favoritesShow.push(seriFavId);
   } else {
-    alert("Ya es favorita");
+    favoritesShow.splice(indexShow, 1);
   }
-  // localStorageFavorite();
+
+  console.log(favoritesShow);
+  localStorageFavorite();
   renderFav();
 }
 
@@ -79,6 +83,7 @@ function renderFav() {
   favoriteContainer.innerHTML = "";
   const favCards = document.createElement("ul");
   favoriteContainer.appendChild(favCards);
+  getFromLocalStorage();
   for (const itemSerie of favoritesShow) {
     const favLittleCards = document.createElement("li");
     favCards.appendChild(favLittleCards);
