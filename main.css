@@ -9,6 +9,7 @@
 .favorites {
   background-color: cornflowerblue;
   width: 30vh;
+  margin-left: 0px;
 }
 
 .result {
@@ -20,13 +21,15 @@
   height: 25px;
 }
 
-.allSeries {
+.all-series-js {
   background-color: lightgreen;
   cursor: pointer;
   margin-bottom: 5px;
+  width: 70vh;
 }
 
-.js-favoriteSelect {
-  
+.SuperFavoriteSelect {
   background-color: blueviolet;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
 }
