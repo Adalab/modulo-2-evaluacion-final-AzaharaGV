@@ -27,8 +27,10 @@ function introElementsByDom() {
   for (const itemSerie of searchResult) {
     const cards = document.createElement("ul");
     resultContainer.appendChild(cards);
+    cards.setAttribute("class", "results-css");
     const littleCards = document.createElement("li");
     littleCards.setAttribute("id", itemSerie.show.id);
+    littleCards.setAttribute("class", "cardsResult-css");
     cards.appendChild(littleCards);
     littleCards.setAttribute("class", "js-favoriteSelect");
     const allInfoCards = document.createTextNode(itemSerie.show.name);
@@ -72,7 +74,6 @@ function favoriteSelect(event) {
     favoritesShow.splice(indexShow, 1);
   }
 
-  console.log(favoritesShow);
   localStorageFavorite();
   renderFav();
 }
@@ -83,6 +84,7 @@ function renderFav() {
   favoriteContainer.innerHTML = "";
   const favCards = document.createElement("ul");
   favoriteContainer.appendChild(favCards);
+  favCards.setAttribute("class", "favCont");
   getFromLocalStorage();
   for (const itemSerie of favoritesShow) {
     const favLittleCards = document.createElement("li");
@@ -100,13 +102,10 @@ function renderFav() {
     } else {
       allInfoFavCardsImage.src = itemSerie.show.image.medium;
     }
-    localStorageFavorite();
   }
 }
 console.log(renderFav);
-
 //Almaceno datos en el localStorage
-
 function localStorageFavorite() {
   localStorage.setItem("localFavorites", JSON.stringify(favoritesShow));
 }
@@ -114,9 +113,25 @@ function localStorageFavorite() {
 function getFromLocalStorage() {
   // Hay algo en el localStrorage?
   // Si -> Sacar localStorage, parse, asignarselo a favoritesShow y llmar a renderFav()
-  if (localStorage !== "") {
-    favoritesShow = JSON.parse(localStorage.getItem("localFavorites"));
+
+  const favoriteLocalStorage = JSON.parse(
+    localStorage.getItem("localFavorites")
+  );
+  console.log(favoriteLocalStorage);
+  if (favoriteLocalStorage !== null) {
+    favoritesShow = favoriteLocalStorage;
   }
 }
-
 renderFav();
+
+//Botón de reset
+
+const resetBoton = document.querySelector(".js-resetbutton");
+function resetFavorites() {
+  localStorage.removeItem("localFavorites");
+  favoritesShow = [];
+  localStorageFavorite();
+  renderFav();
+}
+
+resetBoton.addEventListener("click", resetFavorites);

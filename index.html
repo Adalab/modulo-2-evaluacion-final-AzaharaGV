@@ -8,24 +8,20 @@
     <link rel="stylesheet" href="main.css" />
   </head>
 
-  <body>
+  <body class="back">
     <header class="header">
-      <h1>Buscador de Series</h1>
-      <form action="#" method="get">
+      <h1 class="tittleSeries">Buscador de Series</h1>
+      <form action="#" method="get" class="inputClass">
         <input type="text" class="js-userInput" placeholder="Ej: The Office" />
         <input type="button" class="button js-button" value="Buscar" />
       </form>
     </header>
     <main class="content">
       <section class="all-series-js">
-        <ul class="result js-placeResult">
-          RESULT
-        </ul>
+        <ul class="result js-placeResult"></ul>
       </section>
-      <section class="favorites js-favorites">
-        FAVORITES
-        <input class="button" type="reset" onclick="reset" value="Eliminar" />
-      </section>
+      <input type="button" class="button js-resetbutton" value="Borrar" />
+      <ul class="favorites js-favorites"></ul>
     </main>
 
     <script type="text/javascript" src="./main.js"></script>
