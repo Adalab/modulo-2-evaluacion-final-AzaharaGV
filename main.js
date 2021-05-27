@@ -33,6 +33,8 @@ function introElementsByDom() {
     littleCards.setAttribute("class", "cardsResult-css");
     cards.appendChild(littleCards);
     littleCards.setAttribute("class", "js-favoriteSelect");
+    const leguageShow = document.createTextNode(itemSerie.show.language);
+    littleCards.appendChild(leguageShow);
     const allInfoCards = document.createTextNode(itemSerie.show.name);
     littleCards.appendChild(allInfoCards);
     const allInfoCardsImage = document.createElement("img");
@@ -135,3 +137,11 @@ function resetFavorites() {
 }
 
 resetBoton.addEventListener("click", resetFavorites);
+
+const log = document.querySelector(".js-log");
+function loguear() {
+  favoritesShow.length;
+  console.log(favoritesShow.length);
+}
+
+log.addEventListener("click", loguear);
